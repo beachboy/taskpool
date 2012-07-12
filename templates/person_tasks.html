@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h2>Name: {{ person.name }}</h2>
+  <p>Tasks:</p>
+  {% if not tasks %}
+    <p>No tasks</p>
+  {% else %}
+    <table>
+    {% for task in tasks %}
+    <tr>
+      <td>{{ task.description }}</td>
+      <td>{{ task.context }}</td>
+      <td>{{ task.state }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+  {% endif %}
+  <form method="post" action="/new/{{ person.person_id }}">
+    <label>New task:</label>
+    <input type="text" name="task_description" required="required">
+    <select name="context">
+    {% for context in contexts %}
+      <option value="{{ context.context_id }}">{{ context.name }}</option>
+    {% endfor %}
+    </select>
+    <input type="submit" value="Add">
+  </form>
+{% endblock %}

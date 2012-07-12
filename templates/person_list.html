@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if not persons %}
+    <p class=error><strong>Error:</strong> No persons</p>
+  {% else %}
+  <h2>Person list:</h2>
+  <ol>
+    {% for person in persons %}
+    <li><a href="/person/{{ person.person_id }}">{{ person.name }}</a></li>
+    {% endfor %}
+  </ol>
+  {% endif %}
+{% endblock %}

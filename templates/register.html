@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+  <form action="/persons/new" method="post">
+    <table>
+      <tr>
+        <td><label>Name:</label>
+        <td><input type="text" name="person_name" required="required"></td>
+      </tr>
+      <tr>
+        <td><input type="submit" value="Submit"></td>
+      </tr>
+    </table>
+  </form>
+{% endblock %}

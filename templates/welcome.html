@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if not persons %}
+    <p class=error><strong>Error:</strong> No persons</p>
+  {% else %}
+  <h2>Person list:</h2>
+  <ol>
+    {% for person in persons %}
+    <li>
+      <a href="/person/{{ person.person_id }}">{{ person.name }} ({{ person.n_tasks }} tasks)</a>
+      <ol>
+      {% for task in person.tasks %}
+        <li>{{ task.description }}</li>
+      {% endfor %}
+      </ol>
+    </li>
+    {% endfor %}
+  </ol>
+  {% endif %}
+  <p><a href="/persons/register">Register</a></p>
+{% endblock %}
